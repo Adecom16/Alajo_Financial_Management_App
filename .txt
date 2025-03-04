@@ -1,0 +1,54 @@
+financial-management-app/
+├── .env                     # Environment variables
+├── .gitignore               # Git ignore file
+├── package.json             # NPM dependencies and scripts
+├── tsconfig.json            # TypeScript configuration (if using TypeScript)
+├── README.md                # Project documentation
+│
+├── src/
+│   ├── config/              # Configuration files
+│   │   ├── db.ts            # Database connection setup
+│   │   ├── socket.ts        # WebSocket configuration
+│   │   └── constants.ts     # Application constants
+│   │
+│   ├── controllers/         # Route handlers
+│   │   ├── auth.controller.ts # Authentication routes
+│   │   ├── transaction.controller.ts # Transaction routes
+│   │   └── notification.controller.ts # Notification routes
+│   │
+│   ├── services/            # Business logic
+│   │   ├── auth.service.ts  # Authentication logic
+│   │   ├── transaction.service.ts # Transaction logic
+│   │   └── notification.service.ts # Notification logic
+│   │
+│   ├── models/              # Database models
+│   │   ├── user.model.ts    # User schema and model
+│   │   ├── transaction.model.ts # Transaction schema and model
+│   │   └── notification.model.ts # Notification schema and model
+│   │
+│   ├── middleware/          # Custom middleware
+│   │   ├── auth.middleware.ts # JWT authentication middleware
+│   │   └── validation.middleware.ts # Request validation middleware
+│   │
+│   ├── sockets/             # WebSocket logic
+│   │   └── index.ts         # Socket.IO event handlers
+│   │
+│   ├── utils/               # Utility functions
+│   │   ├── logger.ts        # Logging utility
+│   │   ├── helpers.ts       # Helper functions
+│   │   └── errorHandler.ts  # Custom error handling
+│   │
+│   ├── routes/              # API routes
+│   │   ├── auth.routes.ts   # Authentication routes
+│   │   ├── transaction.routes.ts # Transaction routes
+│   │   └── notification.routes.ts # Notification routes
+│   │
+│   ├── tests/               # Unit and integration tests
+│   │   ├── auth.test.ts     # Authentication tests
+│   │   ├── transaction.test.ts # Transaction tests
+│   │   └── notification.test.ts # Notification tests
+│   │
+│   ├── app.ts               # Express application setup
+│   └── server.ts            # Server entry point
+│
+└── dist/                    # Compiled output (if using TypeScript)

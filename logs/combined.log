@@ -1,0 +1,37 @@
+{"level":"info","message":"Server is running on port 5000"}
+{"level":"info","message":"GET /api-docs/"}
+{"level":"info","message":"GET /api-docs/"}
+{"level":"info","message":"Shutting down server..."}
+{"level":"info","message":"Server is running on port 5000"}
+{"level":"info","message":"GET /api-docs/"}
+{"level":"info","message":"GET /api-docs/swagger-ui.css"}
+{"level":"info","message":"GET /api-docs/swagger-ui-bundle.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-standalone-preset.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-init.js"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"GET /api-docs/"}
+{"level":"info","message":"GET /api-docs/swagger-ui.css"}
+{"level":"info","message":"GET /api-docs/swagger-ui-bundle.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-init.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-standalone-preset.js"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"GET /api-docs/"}
+{"level":"info","message":"GET /api-docs/swagger-ui.css"}
+{"level":"info","message":"GET /api-docs/swagger-ui-bundle.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-standalone-preset.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-init.js"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"Shutting down server..."}
+{"level":"info","message":"Server is running on port 5000"}
+{"level":"info","message":"GET /api-docs/"}
+{"level":"info","message":"GET /api-docs/swagger-ui.css"}
+{"level":"info","message":"GET /api-docs/swagger-ui-bundle.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-standalone-preset.js"}
+{"level":"info","message":"GET /api-docs/swagger-ui-init.js"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"GET /api-docs/favicon-32x32.png"}
+{"level":"info","message":"POST /auth/signup"}
+{"level":"info","message":"User created: user@example.com"}
