@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import TransactionService from '../services/transaction.service';
+import NotificationService from '../services/notification.service';
 import logger from '../utils/logger';
 import { errorHandler } from '../utils/errorHandler';
-import { User } from '@prisma/client'; // Import the User type from Prisma
+import { User } from '@prisma/client';
 
-// Extend the Request type to include the `user` property
+// Define a custom interface for the Request object
 interface CustomRequest extends Request {
   user?: User;
 }
@@ -23,6 +24,7 @@ class TransactionController {
     }
 
     try {
+      // Create the transaction
       const transaction = await TransactionService.createTransaction(
         userId,
         title,
@@ -30,6 +32,18 @@ class TransactionController {
         category,
         notes
       );
+
+      // Create a notification for the user
+      try {
+        await NotificationService.createNotification(
+          userId,
+          `A new transaction "${title}" has been created. Amount: ${amount}.`
+        );
+        logger.info(`Notification created for transaction: ${transaction.id}`);
+      } catch (notificationError) {
+        logger.error(`Error creating notification: ${notificationError}`);
+      }
+
       logger.info(`Transaction created: ${transaction.id}`);
       res.status(201).json({ message: 'Transaction created successfully', transaction });
     } catch (error) {
@@ -56,6 +70,7 @@ class TransactionController {
     }
 
     try {
+      // Update the transaction
       const transaction = await TransactionService.updateTransaction(
         parseInt(id),
         title,
@@ -63,6 +78,18 @@ class TransactionController {
         category,
         notes
       );
+
+      // Create a notification for the user
+      try {
+        await NotificationService.createNotification(
+          userId,
+          `The transaction "${title}" has been updated. New amount: ${amount}.`
+        );
+        logger.info(`Notification created for updated transaction: ${transaction.id}`);
+      } catch (notificationError) {
+        logger.error(`Error creating notification: ${notificationError}`);
+      }
+
       logger.info(`Transaction updated: ${transaction.id}`);
       res.status(200).json({ message: 'Transaction updated successfully', transaction });
     } catch (error) {
@@ -88,7 +115,20 @@ class TransactionController {
     }
 
     try {
+      // Fetch the transaction before deleting it
       const transaction = await TransactionService.deleteTransaction(parseInt(id));
+
+      // Create a notification for the user
+      try {
+        await NotificationService.createNotification(
+          userId,
+          `The transaction "${transaction.title}" has been deleted.`
+        );
+        logger.info(`Notification created for deleted transaction: ${transaction.id}`);
+      } catch (notificationError) {
+        logger.error(`Error creating notification: ${notificationError}`);
+      }
+
       logger.info(`Transaction deleted: ${transaction.id}`);
       res.status(200).json({ message: 'Transaction deleted successfully', transaction });
     } catch (error) {
@@ -114,6 +154,18 @@ class TransactionController {
 
     try {
       const transactions = await TransactionService.getUserTransactions(userId);
+
+      // Optionally create a notification for fetching transactions
+      try {
+        await NotificationService.createNotification(
+          userId,
+          `You have fetched your transactions. Total transactions: ${transactions.length}.`
+        );
+        logger.info(`Notification created for fetching transactions for user: ${userId}`);
+      } catch (notificationError) {
+        logger.error(`Error creating notification: ${notificationError}`);
+      }
+
       logger.info(`Fetched transactions for user: ${userId}`);
       res.status(200).json({ message: 'Transactions fetched successfully', transactions });
     } catch (error) {

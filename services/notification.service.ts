@@ -8,6 +8,17 @@ class NotificationService {
     this.prisma = prisma;
   }
 
+  // Create a new notification
+  async createNotification(userId: number, message: string): Promise<Notification> {
+    return this.prisma.notification.create({
+      data: {
+        userId,
+        message,
+        read: false, // Notifications are unread by default
+      },
+    });
+  }
+
   // Fetch all notifications for a user
   async getUserNotifications(userId: number): Promise<Notification[]> {
     return this.prisma.notification.findMany({

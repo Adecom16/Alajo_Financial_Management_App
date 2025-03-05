@@ -23,7 +23,7 @@ class AuthService {
   }
 
   // Login an existing user
-  async login(email: string, password: string): Promise<string> {
+  async login(email: string, password: string): Promise<{ user: User; token: string }> {
     const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user) {
       throw new Error('User not found');
@@ -39,7 +39,8 @@ class AuthService {
       expiresIn: '1h',
     });
 
-    return token;
+    // Return both user and token
+    return { user, token };
   }
 }
 

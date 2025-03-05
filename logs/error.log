@@ -1,0 +1,20 @@
+{"level":"error","message":"Error creating user: \nInvalid `this.prisma.user.create()` invocation in\n/home/codeadeoluwa/Desktop/Alajo_V2/services/auth.service.ts:17:29\n\n  14 // Signup a new user\n  15 async signup(email: string, password: string): Promise<User> {\n  16   const hashedPassword = await bcrypt.hash(password, 10);\n→ 17   return this.prisma.user.create(\nThe table `public.users` does not exist in the current database."}
+{"level":"error","message":"Error: \nInvalid `this.prisma.user.create()` invocation in\n/home/codeadeoluwa/Desktop/Alajo_V2/services/auth.service.ts:17:29\n\n  14 // Signup a new user\n  15 async signup(email: string, password: string): Promise<User> {\n  16   const hashedPassword = await bcrypt.hash(password, 10);\n→ 17   return this.prisma.user.create(\nThe table `public.users` does not exist in the current database."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error creating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}
+{"level":"error","message":"Error updating transaction: Method not implemented."}
+{"level":"error","message":"Error: Method not implemented."}

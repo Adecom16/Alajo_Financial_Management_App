@@ -25,6 +25,78 @@ const options: swaggerJsdoc.Options = {
           bearerFormat: 'JWT',
         },
       },
+      schemas: {
+        Transaction: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              example: 1,
+            },
+            title: {
+              type: 'string',
+              example: 'Groceries',
+            },
+            amount: {
+              type: 'number',
+              example: 50.0,
+            },
+            category: {
+              type: 'string',
+              example: 'Food',
+            },
+            notes: {
+              type: 'string',
+              example: 'Weekly grocery shopping',
+            },
+            userId: {
+              type: 'integer',
+              example: 1,
+            },
+            createdAt: {
+              type: 'string',
+              format: 'date-time',
+              example: '2023-10-01T12:00:00Z',
+            },
+            updatedAt: {
+              type: 'string',
+              format: 'date-time',
+              example: '2023-10-01T12:00:00Z',
+            },
+          },
+        },
+        Notification: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              example: 1,
+            },
+            message: {
+              type: 'string',
+              example: 'You have a new transaction.',
+            },
+            read: {
+              type: 'boolean',
+              example: false,
+            },
+            userId: {
+              type: 'integer',
+              example: 1,
+            },
+            createdAt: {
+              type: 'string',
+              format: 'date-time',
+              example: '2023-10-01T12:00:00Z',
+            },
+            updatedAt: {
+              type: 'string',
+              format: 'date-time',
+              example: '2023-10-01T12:00:00Z',
+            },
+          },
+        },
+      },
     },
     security: [
       {

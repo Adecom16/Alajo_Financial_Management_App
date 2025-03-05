@@ -6,7 +6,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /notifications:
+ * /notifications/notifications:
  *   get:
  *     summary: Fetch all notifications for a user
  *     tags: [Notifications]

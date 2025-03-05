@@ -35,13 +35,23 @@ const router = express.Router();
  *     responses:
  *       201:
  *         description: Transaction created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Transaction created successfully
+ *                 transaction:
+ *                   $ref: '#/components/schemas/Transaction'
  *       401:
  *         description: Unauthorized
  *       500:
  *         description: Internal server error
  */
 router.post(
-  '/transactions',
+  '/',
   authenticate,
   validateCreateTransaction,
   TransactionController.createTransaction
@@ -84,12 +94,22 @@ router.post(
  *     responses:
  *       200:
  *         description: Transaction updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Transaction updated successfully
+ *                 transaction:
+ *                   $ref: '#/components/schemas/Transaction'
  *       401:
  *         description: Unauthorized
  *       500:
  *         description: Internal server error
  */
-router.put('/transactions/:id', authenticate, TransactionController.updateTransaction);
+router.put('/:id', authenticate, TransactionController.updateTransaction);
 
 /**
  * @swagger
@@ -109,29 +129,51 @@ router.put('/transactions/:id', authenticate, TransactionController.updateTransa
  *     responses:
  *       200:
  *         description: Transaction deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Transaction deleted successfully
+ *                 transaction:
+ *                   $ref: '#/components/schemas/Transaction'
  *       401:
  *         description: Unauthorized
  *       500:
  *         description: Internal server error
  */
-router.delete('/transactions/:id', authenticate, TransactionController.deleteTransaction);
+router.delete('/:id', authenticate, TransactionController.deleteTransaction);
 
 /**
  * @swagger
  * /transactions:
  *   get:
- *     summary: Fetch all transactions for a user
+ *     summary: Fetch all transactions for the authenticated user
  *     tags: [Transactions]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Transactions fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Transactions fetched successfully
+ *                 transactions:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Transaction'
  *       401:
  *         description: Unauthorized
  *       500:
  *         description: Internal server error
  */
-router.get('/transactions', authenticate, TransactionController.getUserTransactions);
+router.get('/', authenticate, TransactionController.getUserTransactions);
 
 export default router;

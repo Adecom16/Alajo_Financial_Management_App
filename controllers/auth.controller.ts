@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import AuthService from '../services/auth.service';
+import NotificationService from '../services/notification.service'; // Import NotificationService
 import logger from '../utils/logger';
 import { errorHandler } from '../utils/errorHandler';
 
@@ -18,7 +19,7 @@ class AuthController {
       } else {
         logger.error(`Error creating user: ${error}`);
       }
-      errorHandler(error, req, res, () => {}); // Pass a no-op function as `next`
+      errorHandler(error, req, res, () => {});
     }
   }
 
@@ -27,7 +28,14 @@ class AuthController {
     const { email, password } = req.body;
 
     try {
-      const token = await AuthService.login(email, password);
+      const { user, token } = await AuthService.login(email, password);
+
+      // Create a notification for the user
+      await NotificationService.createNotification(
+        user.id,
+        `You have successfully logged in.`
+      );
+
       logger.info(`User logged in: ${email}`);
       res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
@@ -36,7 +44,7 @@ class AuthController {
       } else {
         logger.error(`Error logging in: ${error}`);
       }
-      errorHandler(error, req, res, () => {}); // Pass a no-op function as `next`
+      errorHandler(error, req, res, () => {});
     }
   }
 
